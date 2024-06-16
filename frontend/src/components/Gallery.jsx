@@ -6,7 +6,7 @@ const Gallery = ({ items, cat }) => {
         <div>
             {items.map((item) => (
                 <>
-                    {item.id == cat && <Card key={item.id} item={item} />}
+                    {item.category == cat && <Card key={item.id} item={item} />}
                 </>
             ))}
         </div>

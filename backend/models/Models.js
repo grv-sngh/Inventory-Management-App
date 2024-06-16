@@ -10,7 +10,7 @@ const categorySchema = new mongoose.Schema({
   const itemSchema = new mongoose.Schema({
     name: String,
     description: String,
-    category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
+    category: Number,
     price: Number,
     quantity: Number,
   });
