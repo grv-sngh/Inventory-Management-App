@@ -11,6 +11,7 @@ app.use(express.json())
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
+// Categories
 app.get('/categories', async (req, res) => {
     let category = await Category.find({})
     res.send(category)
@@ -24,5 +25,7 @@ app.post('/categories', async (req, res) => {
     await category.save();
     res.send(category);
 });
+
+// Items
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
