@@ -52,4 +52,25 @@ app.get('/items/:id', async (req, res) => {
     res.send(item)
 })
 
+// Search api
+// Search endpoint
+app.get('/api/search', async (req, res) => {
+    const { query, criteria } = req.query;
+  
+    // Create a regex to perform a case-insensitive search
+    const regex = new RegExp(query, 'i');
+    const filter = {};
+  
+    if (criteria && query) {
+      filter[criteria] = regex;
+    }
+  
+    try {
+      const items = await Item.find(filter);
+      res.json(items);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
